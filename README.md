@@ -77,6 +77,55 @@ Run this command if you are using mingw compiler
 
 END!!!!
 
+### VSCode Setup Instructions
+
+1. **Open Visual Studio Code**:
+   Launch VSCode and open the project folder by selecting `File > Open Folder...` and navigating to the `Bank Management System` directory.
+
+2. **Install C++ Extension**:
+   - Go to the Extensions view by clicking on the Extensions icon in the Activity Bar on the side of the window or by pressing `Ctrl+Shift+X`.
+   - Search for "C/C++" and install the extension provided by Microsoft.
+
+3. **Configure Build Tasks**:
+   - Create a `tasks.json` file in the `.vscode` folder (create the folder if it doesn't exist) with the following content:
+   ```json
+   {
+       "version": "2.0.0",
+       "tasks": [
+           {
+               "label": "build",
+               "type": "shell",
+               "command": "g++",
+               "args": [
+                   "-o",
+                   "main",
+                   "main.cpp",
+                   "-I",
+                   "C:\\Program Files\\MySQL\\MySQL Server 8.0\\include",
+                   "-L",
+                   "C:\\Program Files\\MySQL\\MySQL Server 8.0\\lib",
+                   "-lmysql"
+               ],
+               "group": {
+                   "kind": "build",
+                   "isDefault": true
+               },
+               "problemMatcher": ["$gcc"]
+           }
+       ]
+   }
+   ```
+
+4. **Run the Build Task**:
+   - Press `Ctrl+Shift+B` to run the build task. This will compile the `main.cpp` file and create an executable named `main`.
+
+5. **Run the Application**:
+   - Open a terminal in VSCode by selecting `Terminal > New Terminal`.
+   - Execute the program by running:
+   ```bash
+   ./main
+   ```
+
 ## Usage Example
 - To create an account, select the option from the main menu and enter the required details.
 - To transfer funds, select the transfer option, input the account numbers and amount, and confirm the transaction.
